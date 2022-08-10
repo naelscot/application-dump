@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Wyng Contrast Checker</title>
+  <meta property="og:site_name" content="Wyng Contrast Checker">
+  <meta property="og:title" content="Wyng Contrast Checker">
+  <meta property="og:description" content="Wyng aims to enable customers with the technology and tools to create content accessible to all audiences, this checker aids in creating content to fit Web Content Accessibility Guidelines.">
+  <meta property="og:url" content="http://www.wyngcontrastchecker.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/purplelogo.png">
+  <meta name="description" content="Wyng aims to enable customers with the technology and tools to create content accessible to all audiences, this checker aids in creating content to fit Web Content Accessibility Guidelines.">
+  <meta name="keywords" content="accessibility, tools, web, content, contrast, checker, contrastchecker, colors, WCAG">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="css/spectrum.css">
+</head>
+
+<body>
+  <header>
+    <br>
+    <img src="images/whitelogo.png" alt="Wyng Logo" class="logo">
+    <div id="banner">
+      <h1>Contrast <span class="slash">/ </span><span class="title">Checker</span></h1>
+    </div>
+  </header>
+  <div id="wrapper">
+    <p class="page-text">Web accessibility hits squarely at the heart of what we do at Wyng – enabling our customers with the technology and tools to create experiences that empower all consumers, especially those with disabilities, to share, connect, and engage across all digital channels.</p>
+    <p class="page-text">Web Content Accessibility Guidelines (WCAG) 2.0 covers a wide range of recommendations for making online content more accessible. Brands and agencies that follow these guidelines will make their digital content accessible to a wider range of people with disabilities, including those with blindness and low vision, deafness and hearing loss, limited movement, and photosensitivity.</p>
+    <p class="page-text">One area where brands and agencies can make an immediate impact is by following WCAG 2.0 guidelines for color contrast accessibility. Color contrast is an important aspect of online accessibility for both low vision and colorblind users. Color contrast refers to the contrast between foreground (text or graphics) and the background colors. WCAG 2.0 guidelines state that colors should have a color contrast ratio of 4.5:1 for normal text and 3:1 for large text to meet basic AA requirements. To meet the stricter AAA requirements, color contrast rations should be 7:1 for normal text and 4.5:1 for large text.</p>
+    <p class="page-text">To help brands and agencies more easily comply and create online content that meets WCAG 2.0 guidelines, use our Contrast Checker Tool to instantly verify whether your web content colors meet AA and/or AAA requirements for color contrast ratios.
+    </p>
+    <p class="page-text instructions"><strong>Enter a foreground and background color in hexadecimal format (e.g., #F36C3A or #141). You can also choose your color using the color slider. The color grid can also be used to adjust the selected colors lightness or darkness.</strong></p>
+    <br>
+    <section id="contrast-checker">
+      <div id="foreground-color">
+        <label for="colorWellOne">Foreground Color</label>
+        <br>
+        <div id="colorWrapper">
+          <input type="text" id="colorWellOne">
+          <div id="colorOne"></div>
+        </div>
+      </div>
+      <div id="background-color">
+        <label for="colorWellTwo">Background Color</label>
+        <br>
+        <div id="colorWrapperTwo">
+          <input type="text" id="colorWellTwo">
+          <div id="colorTwo"></div>
+        </div>
+      </div>
+    </section>
+    <div id="contrastratio"></div>
+    <section id="contrast-result">
+      <div id="normal-text">
+        <h2>Normal Text (14px)</h2>
+        <p>WCAG 2.0 guidelines state that colors should have a color contrast ratio of 4.5:1 for normal text and 3:1 for large text to meet basic AA requirements.</p>
+        <p>To meet the stricter AAA requirements, color contrast rations should be 7:1 for normal text and 4.5:1 for large text.
+        </p>
+      </div>
+      <div id="normal-pass">
+        <div id="normal-aa"></div>
+        <div id="normal-aaa"></div>
+      </div>
+      <div id="large-text">
+        <h2>Large Text (20px)</h2>
+        <p>WCAG 2.0 guidelines state that colors should have a color contrast ratio of 4.5:1 for normal text and 3:1 for large text to meet basic AA requirements.</p>
+        <p>To meet the stricter AAA requirements, color contrast rations should be 7:1 for normal text and 4.5:1 for large text.
+        </p>
+      </div>
+      <div id="large-pass">
+        <div id="large-aa"></div>
+        <div id="large-aaa"></div>
+      </div>
+    </section>
+    <footer>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.6.2/spectrum.min.js"></script>
+  <script>
+  $("#colorWellOne").spectrum({
+    flat: true,
+    showInput: true,
+    showAlpha: false,
+    allowAlpha: false,
+    showPalette: false,
+    showButtons: true,
+    preferredFormat: "hex",
+    clickoutFiresChange: true,
+    color: "#f8f8f8"
+  });
+
+  $("#colorWellTwo").spectrum({
+    flat: true,
+    showInput: true,
+    showAlpha: false,
+    allowAlpha: false,
+    showPalette: false,
+    showButtons: true,
+    preferredFormat: "hex",
+    clickoutFiresChange: true,
+    color: "#5c0f8c"
+  });
+
+  // Change foreground and background of paragraphs
+
+  $("#colorWellOne").change("input", function() {
+    var ColorOne = $("#colorWellOne").spectrum('get').toHexString();
+    $("#colorOne").css("background-color", ColorOne);
+    $("#normal-text, #large-text").css("color", ColorOne);
+  });
+
+  $("#colorWellTwo").change("input", function() {
+    var ColorTwo = $("#colorWellTwo").spectrum('get').toHexString();
+    $("#colorTwo").css("background-color", ColorTwo);
+    $("#normal-text, #large-text, #normal-pass, #large-pass").css("background-color", ColorTwo);
+  });
+
+
+  // Call function to check ratio
+
+  $(document).ready(function() {
+    $("#colorWellOne, #colorWellTwo").change("input", (getRatio));
+  });
+
+
+  // Check contrast ratio
+
+  function getRatio() {
+    // Get color inputs to check contrast
+    var fg = $("#colorWellOne").spectrum('get').toHexString();
+    var bg = $("#colorWellTwo").spectrum('get').toHexString();
+    var color = fg.replace("#", "");
+    var bgcolor = bg.replace("#", "");
+
+    // Convert hex colors to rgb and then get L
+    function getRGB(color) {
+      try {
+        var color = parseInt(color, 16);
+      } catch (err) {
+        var color = false;
+      }
+      return color;
+    }
+
+    function getsRGB(color) {
+      color = getRGB(color);
+      if (color !== false) {
+        color = color / 255;
+        color = (color <= 0.03928) ? color / 12.92 : Math.pow(((color + 0.055) / 1.055), 2.4);
+        return color;
+      } else {
+        return false;
+      }
+    }
+
+    function hex2rgb(color) {
+      var R = getsRGB(color.substring(0, 2));
+      var G = getsRGB(color.substring(2, 4));
+      var B = getsRGB(color.substring(4, 6));
+
+      var L = (0.2126 * R + 0.7152 * G + 0.0722 * B);
+      return L;
+    }
+
+    if (color.length == 6 && bgcolor.length == 6) {
+      var L1 = hex2rgb(color);
+      var L2 = hex2rgb(bgcolor);
+
+      var ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+      $("#contrastratio").html("Ratio<br>" + (Math.round(ratio * 100) / 100) + ":1");
+      if (ratio >= 4.5) {
+        $("#normal-aa").html("Pass <br> (AA)");
+        $("#normal-aa").css("background-color", "#0dcc31");
+        $("#normal-aa").addClass('pass');
+        $("#large-aaa").html("Pass <br> (AAA)");
+        $("#large-aaa").css("background-color", "#0dcc31");
+        $("#large-aaa").addClass('pass');
+      } else {
+        $("#normal-aa").html("Fail <br> (AA)");
+        $("#normal-aa").css("background-color", "#ad0404");
+        $("#normal-aa").addClass('fail');
+        $("#large-aaa").html("Fail <br> (AAA)");
+        $("#large-aaa").css("background-color", "#ad0404");
+        $("#large-aaa").addClass('fail');
+      }
+      if (ratio >= 3) {
+        $("#large-aa").html("Pass <br> (AA)");
+        $("#large-aa").css("background-color", "#0dcc31");
+        $("#large-aa").addClass('pass');
+      } else {
+        $("#large-aa").html("Fail <br> (AA)");
+        $("#large-aa").css("background-color", "#ad0404");
+        $("#large-aa").addClass('fail');
+      }
+      if (ratio >= 7) {
+        $("#normal-aaa").html("Pass <br> (AAA)");
+        $("#normal-aaa").css("background-color", "#0dcc31");
+        $("#normal-aaa").addClass('pass');
+      } else {
+        $("#normal-aaa").html("Fail <br> (AAA)");
+        $("#normal-aaa").css("background-color", "#ad0404");
+        $("#normal-aaa").addClass('fail');
+      }
+    } else {
+      alert("Please enter valid color");
+    }
+  };
+  </script>
+  <!-- Color contrast checker created based off script for: http://webaim.org/resources/contrastchecker/ Authored by Jared Smith. Source: https://gist.github.com/ffxsam/fd86ccd89905bc82b338 -->
+</body>
+
+</html>

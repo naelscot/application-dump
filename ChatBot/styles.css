@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Chewy|Crafty+Girls|Fredoka+One|Frijole|Permanent+Marker');
+
+body {
+	background: #4286f4;
+}
+
+.container {
+	position: relative;
+}
+
+div.logo {
+	position: absolute;
+	float: left;
+	width: 20%;
+}
+
+div.logo h2 {
+	font-family: 'Fredoka One', cursive, sans-serif;
+	font-size: 40px;
+	text-align: center;
+	color: #ffffff;
+}
+
+h2 span.letter {
+	font-size: 60px;
+}
+
+div.logo h3 {
+	font-family: 'Fredoka One', cursive, sans-serif;
+	font-size: 20px;
+	text-align: center;
+	margin-top: -3%;
+	color: #ffffff;
+}
+
+div.chat-window {
+	position: relative;
+	top: 15%;
+	left: 0px;
+	background-color: #194284;
+	height: 80%;
+	width: 80%;
+	margin-left: 20%;
+	padding: 10px 0px 5px 10px;
+	border-radius: 15px;
+}
+
+textarea {
+	border-radius: 15px;
+}
+
+div.message {
+	position: absolute;
+	top: 78%;
+	left: 66%;
+	font-family: 'Fredoka One', cursive, sans-serif;
+	font-size: 20px; 
+}

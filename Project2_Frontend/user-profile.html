@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Profile</title>
+    <!--navigation top style sheet-->
+	<link rel="stylesheet" href="navigation-top.css">
+	<!--navigation to sidebar style sheet-->
+	<link rel="stylesheet" href="sidebar-nav.css">
+    <style>
+        #mainbody {
+            text-align: center;
+            padding-top: 0;
+            width: 100%;
+        }
+
+        table {
+            width: 80%;
+            padding-bottom: 20%;
+            float: right;
+            background: rgb(230,230,230);
+            
+        }
+    </style>
+</head>
+<body style="background-color:whitesmoke;">
+		<!--navigation top-->
+		<div class="topnav" id="myTopnav">
+			<a id="home-page" class="glossymenu" href="bankWelcomePage.html"> ::: WELCOME :::</a><br>
+			<a id="about-page" class="glossymenu" href="about-page.html">::: ABOUT US :::</a><br>
+			<a id="login-page" class="glossymenu" href="proj2Login.html">::: LOGIN / SIGNUP :::</a><br>
+			<a id="service-page" class="glossymenu" href="customer-service.html">::: HELP :::</a>
+		</div>
+		<!--end of navigation top-->
+
+	<h1 id="mainbody"></h1>
+    <br>
+    <br>
+    <h1 style="text-align:center;">Accounts</h1>
+    <button type="submit" onclick="getUser()" style="display: block; margin: 0 auto;">View Accounts</button>
+    <button type="submit" onclick="putAcct()" style="display: block; margin: 0 auto;">Update Accounts</button>
+    <button type="submit" onclick="delAcct()" style="display: block; margin: 0 auto;">Delete Accounts</button>
+
+	<!--side navigation-->
+	<div id="mySidenav" class="sidenav">
+		<a id="profile-home" href="user-profile.html">Profile Home</a>
+		<a id="request-page" href="request-page.html">Make a Request (Credit, Loan, Job)</a>
+        <a id="request-page" href="bankWelcomePage.html">Log Out</a>
+	</div>
+	<!--end of side navigation-->
+
+	<table>
+		<tbody id="userProfile">
+            <tr>
+                <td>ACCOUNT</td>
+                <td id="acct">-</td>
+            </tr>
+            <tr>
+                <td>USER</td>
+                <td id="user">-</td>
+            </tr>
+            <tr>
+                <td>TYPE</td>
+                <td id="type">-</td>
+            </tr>
+            <tr>
+                <td>BALANCE</td>
+                <td id="bal">-</td>
+            </tr>
+		</tbody>
+	</table>
+    
+</body>
+<script>
+document.getElementById("mainbody").innerHTML = "Welcome, to your profile"
+
+async function getUser() {
+    correct = false;
+    let acct = document.getElementById("acct").innerHTML
+    let user = document.getElementById("user").innerHTML
+    let type = document.getElementById("type").innerHTML
+    let bal = document.getElementById("bal").innerHTML
+
+    console.log("Getting Accounts")
+
+    const url = `http://127.0.0.1:5000/accounts/1`;
+
+    const request = {
+        'userId': userID,
+        'creditType': creditType,
+        'creditLimit': limit,
+        'reqStatus': status
+	}
+
+	console.log(request)
+
+	const httpresponse = fetch(url, {
+		method: 'GET',
+		body: JSON.stringify(request),
+		headers: {
+			"Content-type": "request/json; charset=UTF-8"
+		}
+	});
+
+	httpresponse.then(response => {
+		if(response.status==200){
+			creditStatus = "SUBMITTED"
+            correct = true;
+		}else{
+			alert("Please try again - Could not submit request");
+            console.log("Failure"); 
+		}
+	})    
+}
+}
+
+
+</script>
+<!--JS file for navigation top-->
+<script src="navigation-top.js"></script>
+</html>

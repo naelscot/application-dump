@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sleepy Calculator</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Modak" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Sleepyz<span class="z-two">z</span><span class="z-three">z</span></h1>
+      </div>
+    </header>
+    <p class="text">Most healthy adults can get by with 6 to 9 hours of sleep per night. Planning ahead allows you to rest easy that you'll be in top form the next day.
+      <br> <strong>What time do you need to be up?</strong></p>
+    <section id="calculator">
+      <div id="wakeTime">
+        <input id="wakeHours">
+        <div id="divider">
+          <p>:</p>
+        </div>
+        <input id="wakeMinutes">
+        <select id="amPm">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+      <button id="calculate" value="go" onclick="bedTime()">GO</button>
+      <p class="text text-bottom">A sleep cycle typically lasts about 90 minutes, in that time we move through the five stages of sleep.
+        <br> <strong> In order to get the recommended amount of rest, plan to be asleep by one of these times: </strong></p>
+      <div id="results">
+        <div id="resultOne"></div>
+        <div id="resultTwo"></div>
+        <div id="resultThree"></div>
+        <h3 class="text title">6 hours</h3>
+        <h3 class="text title">7.5 hours</h3>
+        <h3 class="text title">9 hours</h3>
+      </div>
+    </section>
+    <div class="push"></div>
+  </div>
+  <footer class="footer">
+    <p class="text-muted">Designed by Naomi Scott</p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="js/sleepcalculator.js"></script>
+  <script>
+  $(document).ready(function() {
+    $(document).keypress(function(event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if (keycode === 61 || keycode === 13) {
+        $("#calculate").click();
+      }
+    })
+  });
+  </script>
+</body>
+
+</html>

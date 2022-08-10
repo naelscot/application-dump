@@ -1,0 +1,163 @@
+@media only screen and (max-width: 1920px) {
+  .logo {
+    margin: -3% auto;
+  }
+}
+
+@media only screen and (max-width: 1680px) {
+  .logo {
+    margin: -4% auto;
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .logo {
+    margin: -5.5% auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    margin: -7% auto;
+  }
+
+  #results {
+    width: 768px;
+    margin-left: 2px;
+  }
+
+  #resultOne,
+  #resultTwo,
+  #resultThree {
+    width: 243px;
+  }
+
+  h3.text {
+    width: 243px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .logo {
+    margin: -8% auto;
+  }
+
+  .logo h1 {
+    font-size: 3em;
+  }
+
+  p.text {
+    width: 75%;
+    margin-bottom: 0;
+  }
+
+  #wakeTime {
+    display: inline-block;
+    margin-top: -6%;
+    margin-left: 2%;
+  }
+
+  #wakeHours,
+  #wakeMinutes {
+    width: 150px;
+    height: 60px;
+    font-size: 2em;
+  }
+
+  #divider {
+    font-size: 3em;
+  }
+
+  #amPm {
+    width: 50px;
+  }
+
+  #results {
+    width: 400px;
+  }
+
+  #resultOne,
+  #resultTwo,
+  #resultThree {
+    display: block;
+    width: 180px;
+    height: 60px;
+    margin: 15px auto;
+    font-size: 2em;
+  }
+
+  p.text-bottom {
+    width: 90%;
+  }
+
+  h3.text {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .logo {
+    margin: -8% auto;
+  }
+
+  .logo h1 {
+    font-size: 3em;
+  }
+
+  p.text {
+    width: 75%;
+    margin-bottom: 0;
+  }
+
+  #wakeTime {
+    display: inline-block;
+    margin-top: -6%;
+    margin-left: 2%;
+  }
+
+  #wakeHours,
+  #wakeMinutes {
+    width: 150px;
+    height: 60px;
+    font-size: 2em;
+  }
+
+  #divider {
+    font-size: 3em;
+  }
+
+  #amPm {
+    width: 50px;
+  }
+
+  #results {
+    width: 300px;
+  }
+
+  #resultOne,
+  #resultTwo,
+  #resultThree {
+    display: block;
+    width: 180px;
+    height: 60px;
+    margin: 15px auto;
+    font-size: 2em;
+  }
+
+  p.text-bottom {
+    width: 90%;
+  }
+
+  h3.text {
+    display: none;
+  }
+}
